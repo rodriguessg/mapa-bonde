@@ -69,6 +69,16 @@
             font-size: 18px;
         }
 
+        .restaurant-list a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .restaurant-list a:hover {
+            text-decoration: underline;
+        }
+
+
         .eta h2 {
             font-size: 18px;
         }
@@ -135,6 +145,7 @@
             <button onclick="updateMapAndList('Paula Matos', PaulaMatosRestaurants)">Paula Matos</button>
             <button onclick="updateMapAndList('Silvestre', SilvestreRestaurants)">Silvestre</button>
             <button onclick="updateMapAndList('Vista Alegre', VistaAlegreRestaurants)">Vista Alegre</button>
+            <button onclick="updateMapAndList('Todas as rotas', rotas)">Todas as rotas</button>
         </div>
 
         <div class="restaurant-list">
@@ -166,23 +177,32 @@
 
                 'Paula Matos': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.949201937428!2d-43.19760690289562!3d-22.913839253386538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%2C%20212%2C%20R.%20L%C3%A9lio%20Gama%2C%202%20-%20Centro%2C%20Rio%20de%20Janeiro%2C%2020031-080!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f731ef928ef%3A0x1a7534328fd990ef!2sR.%20Paula%20Matos%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-550!3m2!1d-22.9131942!2d-43.1927272!5e0!3m2!1spt-BR!2sbr!4v1726062067510!5m2!1spt-BR!2sbr',
 
-                'Silvestre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7350.078565489766!2d-43.18441295887454!3d-22.91192188459358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e9!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f7adc88e023%3A0x876b246f36715b89!2sSilvestre%20House%20-%20Rua%20Francisco%20Murat%C3%B3ri%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.915211499999998!2d-43.1823985!5e0!3m2!1spt-BR!2sbr!4v1726062178780!5m2!1spt-BR!2sbr',
+                'Silvestre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7330.461765922218!2d-43.1843133643384!3d-22.911440649422314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%2C%20212%2C%20R.%20L%C3%A9lio%20Gama%2C%202%20-%20Centro%2C%20Rio%20de%20Janeiro%2C%2020031-080!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f7adc88e023%3A0x876b246f36715b89!2sSilvestre%20House%20-%20Rua%20Francisco%20Murat%C3%B3ri%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.915211499999998!2d-43.1823985!5e0!3m2!1spt-BR!2sbr!4v1726074761749!5m2!1spt-BR!2sbr',
                 
-                'Vista Alegre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9384.182527294588!2d-43.18834170065749!3d-22.914616306115942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f753f7747bb%3A0xa147a5fad7ce294c!2sR.%20da%20Vista%20Alegre%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-410!3m2!1d-22.9183105!2d-43.1930968!5e0!3m2!1spt-BR!2sbr!4v1726065577487!5m2!1spt-BR!2sbr'
+                'Vista Alegre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9384.182527294588!2d-43.18834170065749!3d-22.914616306115942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f753f7747bb%3A0xa147a5fad7ce294c!2sR.%20da%20Vista%20Alegre%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-410!3m2!1d-22.9183105!2d-43.1930968!5e0!3m2!1spt-BR!2sbr!4v1726065577487!5m2!1spt-BR!2sbr',
+
+                'Todas as rotas': 'https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d33083.36828628302!2d-43.182601391967474!3d-22.920276870418604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f7adc88e023%3A0x876b246f36715b89!2sSilvestre%20House%20-%20Rua%20Francisco%20Murat%C3%B3ri%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.915211499999998!2d-43.1823985!4m5!1s0x997f7653b49977%3A0x5fb4a2d09ecc3d89!2sBanca%20Largo%20do%20Guimar%C3%A3es%20-%20Santa%20Tereza%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.920301199999997!2d-43.1871511!4m5!1s0x997fbd1991f791%3A0x73aa62e3067fbd02!2sFran%C3%A7a%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.930251!2d-43.1959965!4m5!1s0x997f8cf2243edf%3A0x64ce0d28cbd552c0!2sDois%20Irm%C3%A3os%20-%20Rua%20Almirante%20Alexandrino%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9351448!2d-43.2011906!4m5!1s0x997f731ef928ef%3A0x1a7534328fd990ef!2sR.%20Paula%20Matos%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-550!3m2!1d-22.9131942!2d-43.1927272!4m5!1s0x997f753f7747bb%3A0xa147a5fad7ce294c!2sR.%20da%20Vista%20Alegre%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-410!3m2!1d-22.9183105!2d-43.1930968!4m5!1s0x997fbbf0688d6b%3A0xc444f12c61c36e0!2sSanta%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.920637499999998!2d-43.189609499999996!5e0!3m2!1spt-BR!2sbr!4v1726076073126!5m2!1spt-BR!2sbr'
 
                 
             };
             document.getElementById('map').src = mapSrc[location];
 
+            document.getElementById("map").src = mapSrc[location];
+
             // Atualiza a lista de restaurantes
-            const listElement = document.getElementById('restaurant-list');
-            listElement.innerHTML = '';
-            restaurants.forEach(function(restaurant) {
+            const restaurantList = document.getElementById("restaurant-list");
+            restaurantList.innerHTML = '';
+            restaurants.forEach(restaurant => {
                 const li = document.createElement('li');
-                li.textContent = restaurant;
-                listElement.appendChild(li);
+                const link = document.createElement('a');
+                link.href = restaurantUrls[restaurant] || '#';
+                link.textContent = restaurant;
+                link.target = '_blank';
+                li.appendChild(link);
+                restaurantList.appendChild(li);
             });
 
+           
              // Atualiza a estimativa de tempo de chegada
             // <!-- document.getElementById("eta").textContent = `Estimativa de tempo: ${eta}`; -->
              // Faz uma requisição para obter a estimativa de tempo de chegada
@@ -203,13 +223,46 @@
         }
 
         // Listas de restaurantes para cada local
+
         const santaTerezaRestaurants = ['Restaurante Aprazível', 'Restaurante Térèze', 'Bar do Mineiro', 'Espírito Santa', 'Cafecito'];
         const doisIrmaosRestaurants = ['Restaurante Dois Irmãos', 'Restaurante Mirante', 'Bar e Restaurante Vista Linda', 'Café da Montanha', 'Cantina do Caminho'];
         const largoGuimaraesRestaurants = ['Restaurante Largo do Guimarães', 'Bistrô Guimarães', 'Bar e Restaurante Pôr do Sol', 'Casa de Santa Teresa', 'Café Largo'];
         const françaRestaurants = ['Restaurante França', 'Brasserie França', 'Café Le Petit', 'Bistrô de Paris', 'Chez Antoine'];
         const PaulaMatosRestaurants = ['Bonde Boca', 'The Secret Nomad Cooking'];
-        const SilvestreRestaurants = ['Petit Pain', 'Nonna Per Heaven', 'Mô Café', ' Portella Bar'];
+        const SilvestreRestaurants = ['Petit Pain', 'Nonna Per Heaven', 'Mô Café', 'Portella Bar'];
         const VistaAlegreRestaurants = ['Bonde Boca', 'The Secret Nomad Cooking'];
+
+        const rotas = ['Restaurante Aprazível', 'Restaurante Térèze', 'Bar do Mineiro', 'Espírito Santa', 'Cafecito','Restaurante Dois Irmãos', 'Restaurante Mirante', 'Bar e Restaurante Vista Linda', 'Café da Montanha','Restaurante Largo do Guimarães', 'Bistrô Guimarães', 'Bar e Restaurante Pôr do Sol', 'Casa de Santa Teresa', 'Café Largo','Restaurante França', 'Brasserie França', 'Café Le Petit', 'Bistrô de Paris', 'Chez Antoine', 'Bonde Boca', 'The Secret Nomad Cooking', 'Petit Pain', 'Nonna Per Heaven', 'Mô Café', 'Portella Bar' ,'Bonde Boca', 'The Secret Nomad Cooking']
+// adicione os link para o restaurantes selecionados
+        const restaurantUrls = {
+            'Restaurante Aprazível': 'http://www.aprazivel.com.br/',
+            'Restaurante Térèze': 'http://www.restaurantetereze.com.br/',
+            'Bar do Mineiro': 'http://www.bardomineiro.com.br/',
+            'Espírito Santa': 'http://www.espiritosanta.com.br/',
+            'Cafecito': 'http://www.cafecito.com.br/',
+            'Restaurante Dois Irmãos': 'http://www.restaurantedoisirmaos.com.br/',
+            'Restaurante Mirante': 'http://www.restaurantesmirante.com.br/',
+            'Bar e Restaurante Vista Linda': 'http://www.barvista.com.br/',
+            'Café da Montanha': 'http://www.cafemontanha.com.br/',
+            'Cantina do Caminho': 'http://www.cantinadocaminho.com.br/',
+            'Restaurante Largo do Guimarães': 'http://www.restauranteguimaraes.com.br/',
+            'Bistrô Guimarães': 'http://www.bistroguimaraes.com.br/',
+            'Bar e Restaurante Pôr do Sol': 'http://www.pordosol.com.br/',
+            'Casa de Santa Teresa': 'http://www.casadesantateresa.com.br/',
+            'Café Largo': 'http://www.cafelargo.com.br/',
+            'Restaurante França': 'http://www.restaurantefranca.com.br/',
+            'Brasserie França': 'http://www.brasseriefranca.com.br/',
+            'Café Le Petit': 'http://www.cafelepetit.com.br/',
+            'Bistrô de Paris': 'http://www.bistrodeparis.com.br/',
+            'Chez Antoine': 'http://www.chezantoine.com.br/',
+            'Bonde Boca': 'http://www.bondeboca.com.br/',
+            'The Secret Nomad Cooking': 'http://www.thesecretnomadcooking.com.br/',
+            'Petit Pain': 'http://www.petitpain.com.br/',
+            'Nonna Per Heaven': 'http://www.nonnaperheaven.com.br/',
+            'Mô Café': 'http://www.mocafe.com.br/',
+            'Portella Bar': 'http://www.portellabar.com.br/'
+        };
+
     </script>
 </body>
 </html>
