@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#map {
+    width: 100%;
+    height: 400px;
+}
+.container {
+    padding: 20px;
+}
+.buttons {
+    margin-bottom: 20px;
+}
+.buttons button {
+    margin-right: 10px;
+}
+.restaurant-list {
+    margin-top: 20px;
+}
+.restaurant-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+.restaurant-list ul li {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa com Locais e Restaurantes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #map {
+            width: 600px;
+            height: 450px;
+            border: 0;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.3512256042957!2d-43.19099037503553!3d-22.91609988500006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f8b284dc54a7%3A0xb0320a59afcfec8!2sSanta%20Tereza!5e0!3m2!1spt-BR!2sbr!4v1626033225077!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <div class="buttons">
+            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14699.77576409412!2d-43.192879208568485!3d-22.91543845359048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde!5e0!3m2!1spt-BR!2sbr!4v1726008310426!5m2!1spt-BR!2sbr')">Santa Tereza</button>
+            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6180.593039969929!2d-43.18763295448573!3d-22.9132746123756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde!5e0!3m2!1spt-BR!2sbr!4v1726008204397!5m2!1spt-BR!2sbr')">Dois Irmãos</button>
+            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.77576409412!2d-43.19108800856847!3d-22.91543845359048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f2cd90878ab%3A0x4ecb7555befb5ad8!2sLargo%20do%20Guimar%C3%A3es%20-%20Rua%20Almirante%20Alexandrino%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9215525!2d-43.1860405!5e0!3m2!1spt-BR!2sbr!4v1726007971553!5m2!1spt-BR!2sbr')">Largo do Guimarães</button>
+        </div>
+    </div>
+
+    <script>
+        function updateMap(url) {
+            document.getElementById('map').src = url;
+        }
+    </script>
+</body>
+</html>
