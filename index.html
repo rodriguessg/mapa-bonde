@@ -25,7 +25,8 @@
         #map {
             width: 600px;
             height: 450px;
-            border: 0;
+            border: 1px  solid #333;
+            border-radius: 20px;
             margin-bottom: 20px;
         }
 
@@ -47,6 +48,79 @@
         .buttons button:hover {
             background-color: #0056b3;
         }
+
+        .restaurant-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .restaurant-list h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .restaurant-list ul li {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .eta h2 {
+            font-size: 18px;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            #map {
+                height: 300px;
+            }
+
+            .buttons button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .restaurant-list h1 {
+                font-size: 20px;
+            }
+
+            .restaurant-list ul li {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #map {
+                height: 250px;
+                margin-left: 15%;
+                border-radius: 40px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                margin-left: 30%;
+            }
+
+            .buttons button {
+                width: 100%;
+                max-width: 300px;
+                font-size: 14px;
+                margin: 5px 0;
+            }
+
+            .restaurant-list h1 {
+                font-size: 18px;
+            }
+
+            .restaurant-list ul li {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -54,16 +128,88 @@
         <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.3512256042957!2d-43.19099037503553!3d-22.91609988500006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f8b284dc54a7%3A0xb0320a59afcfec8!2sSanta%20Tereza!5e0!3m2!1spt-BR!2sbr!4v1626033225077!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
         <div class="buttons">
-            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14699.77576409412!2d-43.192879208568485!3d-22.91543845359048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde!5e0!3m2!1spt-BR!2sbr!4v1726008310426!5m2!1spt-BR!2sbr')">Santa Tereza</button>
-            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6180.593039969929!2d-43.18763295448573!3d-22.9132746123756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde!5e0!3m2!1spt-BR!2sbr!4v1726008204397!5m2!1spt-BR!2sbr')">Dois Irmãos</button>
-            <button onclick="updateMap('https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.77576409412!2d-43.19108800856847!3d-22.91543845359048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f2cd90878ab%3A0x4ecb7555befb5ad8!2sLargo%20do%20Guimar%C3%A3es%20-%20Rua%20Almirante%20Alexandrino%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9215525!2d-43.1860405!5e0!3m2!1spt-BR!2sbr!4v1726007971553!5m2!1spt-BR!2sbr')">Largo do Guimarães</button>
+            <button onclick="updateMapAndList('Santa Tereza', santaTerezaRestaurants)">Santa Tereza</button>
+            <button onclick="updateMapAndList('Dois Irmãos', doisIrmaosRestaurants)">Dois Irmãos</button>
+            <button onclick="updateMapAndList('Largo do Guimarães', largoGuimaraesRestaurants)">Largo do Guimarães</button>
+            <button onclick="updateMapAndList('França', françaRestaurants)">França</button>
+            <button onclick="updateMapAndList('Paula Matos', PaulaMatosRestaurants)">Paula Matos</button>
+            <button onclick="updateMapAndList('Silvestre', SilvestreRestaurants)">Silvestre</button>
+            <button onclick="updateMapAndList('Vista Alegre', VistaAlegreRestaurants)">Vista Alegre</button>
         </div>
+
+        <div class="restaurant-list">
+            <h1>Restaurantes nas proximidades</h1>
+            <ul id="restaurant-list">
+                <!-- Lista de restaurantes será atualizada aqui -->
+            </ul>
+        </div>
+         <!-- <div class="eta">  -->
+             <!-- <h2>Estimativa de tempo de chegada</h2>  -->
+             <!-- <p id="eta">Selecione uma rota para ver a estimativa de tempo.</p>  -->
+         <!-- </div>  -->
+
+        
     </div>
 
     <script>
-        function updateMap(url) {
-            document.getElementById('map').src = url;
+        // Função para atualizar o mapa e a lista de restaurantes
+        function updateMapAndList(location, restaurants, url) {
+            // Atualiza o mapa (exemplo com local fixo para cada botão)
+            const mapSrc = {
+                'Santa Tereza': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7349.906179539985!2d-43.188836708874234!3d-22.915101034816484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e1!4m5!1s0x997fbbf0688d6b%3A0xc444f12c61c36e0!2sSanta%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.920637499999998!2d-43.189609499999996!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!5e0!3m2!1spt-BR!2sbr!4v1726060980348!5m2!1spt-BR!2sbr',
+
+                'Dois Irmãos': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d29398.158254977046!2d-43.20896169645374!3d-22.921860794459672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%2C%20212%2C%20R.%20L%C3%A9lio%20Gama%2C%202%20-%20Centro%2C%20Rio%20de%20Janeiro%2C%2020031-080!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f8cf2243edf%3A0x64ce0d28cbd552c0!2sDois%20Irm%C3%A3os%2C%20R.%20Alm.%20Alexandrino%2C%203239%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020241-260!3m2!1d-22.9351448!2d-43.2011906!5e0!3m2!1spt-BR!2sbr!4v1726061541183!5m2!1spt-BR!2sbr',
+
+                'Largo do Guimarães': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.77576409412!2d-43.19108800856847!3d-22.91543845359048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f2cd90878ab%3A0x4ecb7555befb5ad8!2sLargo%20do%20Guimar%C3%A3es%20-%20Rua%20Almirante%20Alexandrino%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9215525!2d-43.1860405!5e0!3m2!1spt-BR!2sbr!4v1726007971553!5m2!1spt-BR!2sbr',
+
+                'França': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.337444131392!2d-43.19606475289227!3d-22.91947955414559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%2C%20212%2C%20R.%20L%C3%A9lio%20Gama%2C%202%20-%20Centro%2C%20Rio%20de%20Janeiro%2C%2020031-080!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997fbd1991f791%3A0x73aa62e3067fbd02!2sFran%C3%A7a%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.930251!2d-43.1959965!5e0!3m2!1spt-BR!2sbr!4v1726061638810!5m2!1spt-BR!2sbr',
+
+                'Paula Matos': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d14699.949201937428!2d-43.19760690289562!3d-22.913839253386538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%2C%20212%2C%20R.%20L%C3%A9lio%20Gama%2C%202%20-%20Centro%2C%20Rio%20de%20Janeiro%2C%2020031-080!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f731ef928ef%3A0x1a7534328fd990ef!2sR.%20Paula%20Matos%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-550!3m2!1d-22.9131942!2d-43.1927272!5e0!3m2!1spt-BR!2sbr!4v1726062067510!5m2!1spt-BR!2sbr',
+
+                'Silvestre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7350.078565489766!2d-43.18441295887454!3d-22.91192188459358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e9!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f7adc88e023%3A0x876b246f36715b89!2sSilvestre%20House%20-%20Rua%20Francisco%20Murat%C3%B3ri%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.915211499999998!2d-43.1823985!5e0!3m2!1spt-BR!2sbr!4v1726062178780!5m2!1spt-BR!2sbr',
+                
+                'Vista Alegre': 'https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9384.182527294588!2d-43.18834170065749!3d-22.914616306115942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x997f6169e0cae7%3A0x490dafa0efe48014!2sEsta%C3%A7%C3%A3o%20Carioca%20do%20Bonde%20-%20Rua%20L%C3%A9lio%20Gama%20-%20Centro%2C%20Rio%20de%20Janeiro%20-%20RJ!3m2!1d-22.9102601!2d-43.1786305!4m5!1s0x997f753f7747bb%3A0xa147a5fad7ce294c!2sR.%20da%20Vista%20Alegre%20-%20Santa%20Teresa%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2020251-410!3m2!1d-22.9183105!2d-43.1930968!5e0!3m2!1spt-BR!2sbr!4v1726065577487!5m2!1spt-BR!2sbr'
+
+                
+            };
+            document.getElementById('map').src = mapSrc[location];
+
+            // Atualiza a lista de restaurantes
+            const listElement = document.getElementById('restaurant-list');
+            listElement.innerHTML = '';
+            restaurants.forEach(function(restaurant) {
+                const li = document.createElement('li');
+                li.textContent = restaurant;
+                listElement.appendChild(li);
+            });
+
+             // Atualiza a estimativa de tempo de chegada
+            // <!-- document.getElementById("eta").textContent = `Estimativa de tempo: ${eta}`; -->
+             // Faz uma requisição para obter a estimativa de tempo de chegada
+            // async function fetchEta(url) {
+              //  try {
+                //    const response = await fetch(url);
+                  //  const text = await response.text();
+                    //const parser = new DOMParser();
+                   //const doc = parser.parseFromString(text, 'text/html');
+                  //  const etaElement = doc.querySelector('.UgZKXd'); // Seleciona o elemento da estimativa de tempo
+                   // const eta = etaElement ? etaElement.textContent : 'Não disponível';
+                    //document.getElementById("eta").textContent = `Estimativa de tempo: ${eta}`;
+               // } catch (error) {
+                 //   console.error('Erro ao buscar estimativa de tempo:', error);
+                   // document.getElementById("eta").textContent = 'Erro ao buscar estimativa de tempo.';
+              //  }
+           // }
         }
+
+        // Listas de restaurantes para cada local
+        const santaTerezaRestaurants = ['Restaurante Aprazível', 'Restaurante Térèze', 'Bar do Mineiro', 'Espírito Santa', 'Cafecito'];
+        const doisIrmaosRestaurants = ['Restaurante Dois Irmãos', 'Restaurante Mirante', 'Bar e Restaurante Vista Linda', 'Café da Montanha', 'Cantina do Caminho'];
+        const largoGuimaraesRestaurants = ['Restaurante Largo do Guimarães', 'Bistrô Guimarães', 'Bar e Restaurante Pôr do Sol', 'Casa de Santa Teresa', 'Café Largo'];
+        const françaRestaurants = ['Restaurante França', 'Brasserie França', 'Café Le Petit', 'Bistrô de Paris', 'Chez Antoine'];
+        const PaulaMatosRestaurants = ['Bonde Boca', 'The Secret Nomad Cooking'];
+        const SilvestreRestaurants = ['Petit Pain', 'Nonna Per Heaven', 'Mô Café', ' Portella Bar'];
+        const VistaAlegreRestaurants = ['Bonde Boca', 'The Secret Nomad Cooking'];
     </script>
 </body>
 </html>
